@@ -6,6 +6,9 @@ namespace JasoWatch.Tests;
 public sealed class FilenameNormalizerTests
 {
     [Fact]
+    public void EnablesWindowsAutostartByDefault() => Assert.True(AppSettings.Defaults().StartWithWindows);
+
+    [Fact]
     public void DetectsAndNormalizesUnicodeNfc() => Assert.True(FilenameNormalizer.NeedsNormalization("한글.pdf"));
 
     [Fact]

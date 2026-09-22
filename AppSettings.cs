@@ -4,7 +4,7 @@ namespace JasoWatch;
 
 public sealed class AppSettings
 {
-    public bool StartWithWindows { get; set; }
+    public bool StartWithWindows { get; set; } = true;
     public string WatchFolder { get; set; } = KnownFolders.Downloads;
     public bool IncludeSubdirectories { get; set; } = true;
     public List<string> ExcludedExtensions { get; set; } = [".crdownload", ".part", ".tmp"];

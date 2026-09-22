@@ -155,7 +155,7 @@ Mytory Jaso Watch는 파일 내용이나 폴더 내용은 변경하지 않는다
 
 설정 항목:
 
-- Windows 시작 시 자동 실행
+- Windows 시작 시 자동 실행 (기본값: 켜짐)
 - 감시 폴더
 - 하위 폴더 감시 여부 (기본값: 켜짐)
 - 처리 제외 확장자
@@ -169,11 +169,12 @@ Mytory Jaso Watch는 파일 내용이나 폴더 내용은 변경하지 않는다
 
 - Downloads 알려진 폴더
 - 하위 폴더 감시 켜짐
-- 자동 시작 꺼짐
+- 자동 시작 켜짐
 - 기본 제외 규칙
 
 ## 9. Windows 자동 시작
 
+- 새 설정의 기본값은 켜짐이다. 사용자는 설정에서 끌 수 있다.
 - `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run`을 사용한다.
 - 값 이름은 `JasoWatch`다.
 - 값 데이터는 따옴표로 감싼 현재 EXE 경로와 `--autostart` 인수다.
