@@ -13,6 +13,9 @@
     <Product>Mytory Jaso Watch</Product>
     <Title>Mytory Jaso Watch</Title>
     <Description>Mac에서 온 분해형 파일명을 Windows에서 NFC로 정리하는 포터블 유틸리티</Description>
+    <Version>1.0.0</Version>
+    <FileVersion>1.0.0.0</FileVersion>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <DebugType>None</DebugType>
     <DebugSymbols>false</DebugSymbols>
   </PropertyGroup>
