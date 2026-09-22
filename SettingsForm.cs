@@ -13,6 +13,7 @@ public sealed class SettingsForm : Form
     {
         Settings = new AppSettings { WatchFolder = current.WatchFolder, IncludeSubdirectories = current.IncludeSubdirectories, StartWithWindows = current.StartWithWindows, ExcludedExtensions = [.. current.ExcludedExtensions], ExcludedPrefixes = [.. current.ExcludedPrefixes], HasShownFirstRunGuide = current.HasShownFirstRunGuide };
         Text = "Mytory Jaso Watch 설정"; FormBorderStyle = FormBorderStyle.FixedDialog; MaximizeBox = MinimizeBox = false; StartPosition = FormStartPosition.CenterScreen; ClientSize = new Size(530, 260);
+        Icon = LoadApplicationIcon();
         _folder.Text = Settings.WatchFolder; _subfolders.Checked = Settings.IncludeSubdirectories; _autostart.Checked = Settings.StartWithWindows;
         _extensions.Text = string.Join(", ", Settings.ExcludedExtensions); _prefixes.Text = string.Join(", ", Settings.ExcludedPrefixes);
         var browse = new Button { Text = "찾아보기…", AutoSize = true };
@@ -34,4 +35,13 @@ public sealed class SettingsForm : Form
     }
 
     private static List<string> ParseList(string value) => value.Split(',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries).Distinct(StringComparer.OrdinalIgnoreCase).ToList();
+
+    private static Icon LoadApplicationIcon()
+    {
+        using var stream = typeof(SettingsForm).Assembly.GetManifestResourceNames()
+            .Where(name => name.EndsWith(".assets.icons.jasowatch-active.ico", StringComparison.OrdinalIgnoreCase))
+            .Select(typeof(SettingsForm).Assembly.GetManifestResourceStream)
+            .Single()!;
+        return (Icon)new Icon(stream).Clone();
+    }
 }
