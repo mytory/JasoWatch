@@ -12,7 +12,7 @@ public sealed class SettingsForm : Form
     public SettingsForm(AppSettings current)
     {
         Settings = new AppSettings { WatchFolder = current.WatchFolder, IncludeSubdirectories = current.IncludeSubdirectories, StartWithWindows = current.StartWithWindows, ExcludedExtensions = [.. current.ExcludedExtensions], ExcludedPrefixes = [.. current.ExcludedPrefixes], HasShownFirstRunGuide = current.HasShownFirstRunGuide };
-        Text = "JasoWatch 설정"; FormBorderStyle = FormBorderStyle.FixedDialog; MaximizeBox = MinimizeBox = false; StartPosition = FormStartPosition.CenterScreen; ClientSize = new Size(530, 260);
+        Text = "Mytory Jaso Watch 설정"; FormBorderStyle = FormBorderStyle.FixedDialog; MaximizeBox = MinimizeBox = false; StartPosition = FormStartPosition.CenterScreen; ClientSize = new Size(530, 260);
         _folder.Text = Settings.WatchFolder; _subfolders.Checked = Settings.IncludeSubdirectories; _autostart.Checked = Settings.StartWithWindows;
         _extensions.Text = string.Join(", ", Settings.ExcludedExtensions); _prefixes.Text = string.Join(", ", Settings.ExcludedPrefixes);
         var browse = new Button { Text = "찾아보기…", AutoSize = true };

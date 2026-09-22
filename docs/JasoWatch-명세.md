@@ -1,19 +1,19 @@
-# JasoWatch 개발 명세
+# Mytory Jaso Watch 개발 명세
 
 ## 1. 제품 개요
 
-JasoWatch는 Windows의 감시 폴더에서 새로 생성되거나 이름이 변경된 파일과 폴더의 파일명을 감시한다. 파일명 전체가 Unicode NFC 정규화 결과와 다르면, 기존 항목을 덮어쓰지 않는 이름으로 자동 변경한다.
+Mytory Jaso Watch는 Windows의 감시 폴더에서 새로 생성되거나 이름이 변경된 파일과 폴더의 파일명을 감시한다. 파일명 전체가 Unicode NFC 정규화 결과와 다르면, 기존 항목을 덮어쓰지 않는 이름으로 자동 변경한다.
 
 기본 감시 폴더는 Windows가 제공하는 Downloads 알려진 폴더다. 이 조회가 실패한 경우에만 `%USERPROFILE%\Downloads`를 사용한다.
 
-JasoWatch는 파일 내용이나 폴더 내용은 변경하지 않는다. 파일명만 변경하며, 설치 없이 단일 EXE로 실행하는 포터블 유틸리티다.
+Mytory Jaso Watch는 파일 내용이나 폴더 내용은 변경하지 않는다. 파일명만 변경하며, 설치 없이 단일 EXE로 실행하는 포터블 유틸리티다.
 
 ## 2. 지원 환경과 배포
 
 - C#, .NET 10 LTS, WinForms
 - Windows 10 및 Windows 11 x64
 - `win-x64` self-contained single-file publish
-- 배포물은 `JasoWatch.exe` 하나를 담은 ZIP
+- 배포물은 `Mytory Jaso Watch.exe` 하나를 담은 ZIP
 - v1에는 코드 서명을 포함하지 않는다.
 - ARM64, 32비트 Windows, 네트워크 공유 폴더 감시는 v1 범위에서 제외한다.
 

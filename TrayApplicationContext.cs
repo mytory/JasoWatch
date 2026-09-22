@@ -23,7 +23,7 @@ public sealed class TrayApplicationContext : ApplicationContext
         _settings = SettingsStore.Load();
         _normalizer = new FileNormalizationService(() => _settings);
         _normalizer.FailureCountChanged += _ => UpdateUi();
-        _tray = new NotifyIcon { Visible = true, Text = "JasoWatch" };
+        _tray = new NotifyIcon { Visible = true, Text = "Mytory Jaso Watch" };
         _tray.DoubleClick += (_, _) => OpenWatchFolder();
         _pauseResume.Click += (_, _) => TogglePause();
         _openFolder.Click += (_, _) => OpenWatchFolder();
@@ -36,7 +36,7 @@ public sealed class TrayApplicationContext : ApplicationContext
         StartWatcher();
         UpdateUi();
         ShowFirstRunGuideIfNeeded();
-        _ = Task.Run(() => { while (existingInstanceSignal.WaitOne()) _ui.Post(_ => ShowBalloon("JasoWatch", "JasoWatch가 이미 실행 중입니다."), null); });
+        _ = Task.Run(() => { while (existingInstanceSignal.WaitOne()) _ui.Post(_ => ShowBalloon("Mytory Jaso Watch", "Mytory Jaso Watch가 이미 실행 중입니다."), null); });
     }
 
     private void StartWatcher()
@@ -153,7 +153,10 @@ public sealed class TrayApplicationContext : ApplicationContext
         _cleanup.Text = _cleanupCancellation is null ? "기존 파일명 정리" : "기존 파일명 정리 중…";
         _status.Text = _paused ? "상태: 감시 일시 중단" : _folderUnavailable ? "상태: 감시 폴더 접근 불가" : _cleanupCancellation is not null ? "상태: 기존 파일명 정리 진행" : _normalizer.FailureCount > 0 ? $"상태: 정상화 실패 {_normalizer.FailureCount}개" : "상태: 실행 중";
         var iconName = _paused ? "jasowatch-paused.ico" : _folderUnavailable || _normalizer.FailureCount > 0 ? "jasowatch-warning.ico" : "jasowatch-active.ico";
-        using var stream = typeof(TrayApplicationContext).Assembly.GetManifestResourceStream($"JasoWatch.assets.icons.{iconName}")!;
+        using var stream = typeof(TrayApplicationContext).Assembly.GetManifestResourceNames()
+            .Where(name => name.EndsWith($".assets.icons.{iconName}", StringComparison.OrdinalIgnoreCase))
+            .Select(typeof(TrayApplicationContext).Assembly.GetManifestResourceStream)
+            .Single()!;
         _tray.Icon = (Icon)new Icon(stream).Clone();
     }
 
@@ -168,7 +171,7 @@ public sealed class TrayApplicationContext : ApplicationContext
         {
             timer.Stop();
             timer.Dispose();
-            ShowBalloon("JasoWatch 시작", "트레이에서 자동 감시 중입니다. 기존 파일은 ‘기존 파일명 정리’ 메뉴에서 처리하세요.");
+            ShowBalloon("Mytory Jaso Watch 시작", "트레이에서 자동 감시 중입니다. 기존 파일은 ‘기존 파일명 정리’ 메뉴에서 처리하세요.");
         };
         timer.Start();
     }

@@ -9,6 +9,10 @@
     <SelfContained>true</SelfContained>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <ApplicationIcon>assets\icons\jasowatch-active.ico</ApplicationIcon>
+    <AssemblyName>Mytory Jaso Watch</AssemblyName>
+    <Product>Mytory Jaso Watch</Product>
+    <Title>Mytory Jaso Watch</Title>
+    <Description>Mac에서 온 분해형 파일명을 Windows에서 NFC로 정리하는 포터블 유틸리티</Description>
     <DebugType>None</DebugType>
     <DebugSymbols>false</DebugSymbols>
   </PropertyGroup>
