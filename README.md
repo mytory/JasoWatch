@@ -4,6 +4,8 @@ Mytory Jaso Watch는 **Mac에서 만들어진 분해형 파일명이 Windows에 
 
 파일의 내용은 건드리지 않고 이름만 바꿉니다. 설치 과정 없이 EXE 하나로 실행됩니다.
 
+개인정보 처리방침은 [소개 페이지](https://mytory.github.io/JasoWatch/privacy.html)에서 확인할 수 있습니다.
+
 ## 다운로드와 실행
 
 1. [Releases](../../releases)에서 최신 `Mytory-Jaso-Watch-win-x64.zip`을 받습니다.
