@@ -95,9 +95,12 @@ public sealed class TrayApplicationContext : ApplicationContext
         UpdateUi();
         try
         {
-            var progress = new Progress<CleanupProgress>(p => { _status.Text = $"기존 파일명 정리 진행: 검사 {p.Checked}개, 변경 {p.Changed}개"; });
+            var progress = new Progress<CleanupProgress>(p => { _status.Text = $"기존 파일명 정리 진행: 변경 {p.Changed}개 (검사 {p.Checked}개)"; });
             var result = await _normalizer.CleanupAsync(_cleanupCancellation.Token, progress);
-            ShowBalloon("기존 파일명 정리 완료", $"검사 {result.Checked}개 · 변경 {result.Changed}개 · 실패 {result.Failed}개");
+            var summary = result.Changed == 0
+                ? $"바꿀 파일명이 없습니다. (검사 {result.Checked}개 · 실패 {result.Failed}개)"
+                : $"파일명 {result.Changed}개를 정리했습니다. (검사 {result.Checked}개 · 실패 {result.Failed}개)";
+            ShowBalloon("기존 파일명 정리 완료", summary);
         }
         catch (OperationCanceledException) { }
         finally { _cleanupCancellation.Dispose(); _cleanupCancellation = null; UpdateUi(); }
