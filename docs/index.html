@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Windows 파일명을 안전하게 NFC로 정리하는 포터블 트레이 유틸리티">
+  <title>JasoWatch — 파일명, 자연스럽게 정리</title>
+  <style>
+    :root { color-scheme: light; --ink:#172033; --blue:#1769e0; --mist:#f3f7ff; --line:#d9e3f3; }
+    * { box-sizing:border-box; } body { margin:0; color:var(--ink); font-family:"Malgun Gothic", system-ui, sans-serif; line-height:1.65; }
+    main { max-width:960px; margin:auto; padding:0 24px; } header { background:linear-gradient(135deg,#edf5ff,#fff 60%); border-bottom:1px solid var(--line); }
+    .hero { padding:88px 24px 80px; max-width:960px; margin:auto; } .mark { color:var(--blue); font-weight:700; letter-spacing:.04em; }
+    h1 { font-size:clamp(2.2rem,6vw,4.7rem); line-height:1.1; margin:.25em 0; letter-spacing:-.06em; } h2 { margin-top:64px; font-size:1.65rem; letter-spacing:-.04em; }
+    .lead { font-size:1.2rem; max-width:42rem; } .button { display:inline-block; margin-top:16px; padding:13px 20px; background:var(--blue); color:white; text-decoration:none; border-radius:10px; font-weight:700; }
+    .example { margin-top:40px; padding:18px 22px; border-radius:12px; background:#172033; color:#fff; font-family:ui-monospace,Consolas,monospace; } .before { color:#ffb4ab; } .after { color:#a7f3d0; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:16px; } .card { padding:20px; border:1px solid var(--line); border-radius:12px; background:var(--mist); }
+    ol { padding-left:1.4em; } footer { margin-top:72px; padding:32px 0; border-top:1px solid var(--line); color:#61708a; font-size:.92rem; }
+  </style>
+</head>
+<body>
+  <header><div class="hero"><div class="mark">JASOWATCH</div><h1>파일명, 자연스럽게 정리.</h1><p class="lead">다운로드 폴더에 들어오는 분해된 Unicode 파일명을 감지해 Windows에서 자연스럽게 읽히는 NFC 이름으로 정리합니다.</p><a class="button" href="../releases">무료로 다운로드</a><div class="example"><span class="before">한글 문서.pdf</span> &nbsp;→&nbsp; <span class="after">한글 문서.pdf</span></div></div></header>
+  <main>
+    <h2>조용히, 안전하게</h2><div class="grid"><article class="card"><strong>내용은 그대로</strong><br>파일과 폴더의 이름만 바꿉니다.</article><article class="card"><strong>덮어쓰지 않음</strong><br>같은 이름이 있으면 가장 작은 번호를 붙입니다.</article><article class="card"><strong>다운로드를 기다림</strong><br>파일 쓰기가 끝나고 잠금이 풀린 뒤 처리합니다.</article></div>
+    <h2>사용 방법</h2><ol><li>최신 릴리즈 ZIP을 내려받아 압축을 풉니다.</li><li><code>JasoWatch.exe</code>를 실행합니다. 설치는 필요 없습니다.</li><li>트레이 아이콘에서 감시 상태와 설정을 관리합니다.</li></ol>
+    <p>기본 감시 위치는 다운로드 폴더입니다. 이미 있는 파일도 아이콘 메뉴의 <strong>기존 파일명 정리</strong>로 한 번에 검사할 수 있습니다.</p>
+    <h2>필요한 환경</h2><p>Windows 10 또는 11, 64비트 환경에서 사용할 수 있습니다. 네트워크 공유 폴더는 지원하지 않습니다.</p>
+    <footer>JasoWatch · <a href="../">GitHub 저장소</a> · MIT License</footer>
+  </main>
+</body>
+</html>
