@@ -11,7 +11,7 @@ public sealed class SettingsForm : Form
 
     public SettingsForm(AppSettings current)
     {
-        Settings = new AppSettings { WatchFolder = current.WatchFolder, IncludeSubdirectories = current.IncludeSubdirectories, StartWithWindows = current.StartWithWindows, ExcludedExtensions = [.. current.ExcludedExtensions], ExcludedPrefixes = [.. current.ExcludedPrefixes] };
+        Settings = new AppSettings { WatchFolder = current.WatchFolder, IncludeSubdirectories = current.IncludeSubdirectories, StartWithWindows = current.StartWithWindows, ExcludedExtensions = [.. current.ExcludedExtensions], ExcludedPrefixes = [.. current.ExcludedPrefixes], HasShownFirstRunGuide = current.HasShownFirstRunGuide };
         Text = "JasoWatch 설정"; FormBorderStyle = FormBorderStyle.FixedDialog; MaximizeBox = MinimizeBox = false; StartPosition = FormStartPosition.CenterScreen; ClientSize = new Size(530, 260);
         _folder.Text = Settings.WatchFolder; _subfolders.Checked = Settings.IncludeSubdirectories; _autostart.Checked = Settings.StartWithWindows;
         _extensions.Text = string.Join(", ", Settings.ExcludedExtensions); _prefixes.Text = string.Join(", ", Settings.ExcludedPrefixes);
@@ -20,7 +20,7 @@ public sealed class SettingsForm : Form
         var defaults = new Button { Text = "기본값 복원", AutoSize = true };
         defaults.Click += (_, _) => { _extensions.Text = ".crdownload, .part, .tmp"; _prefixes.Text = "~$"; };
         var ok = new Button { Text = "저장", DialogResult = DialogResult.OK, AutoSize = true };
-        ok.Click += (_, _) => Settings = new AppSettings { WatchFolder = _folder.Text.Trim(), IncludeSubdirectories = _subfolders.Checked, StartWithWindows = _autostart.Checked, ExcludedExtensions = ParseList(_extensions.Text), ExcludedPrefixes = ParseList(_prefixes.Text) };
+        ok.Click += (_, _) => Settings = new AppSettings { WatchFolder = _folder.Text.Trim(), IncludeSubdirectories = _subfolders.Checked, StartWithWindows = _autostart.Checked, ExcludedExtensions = ParseList(_extensions.Text), ExcludedPrefixes = ParseList(_prefixes.Text), HasShownFirstRunGuide = Settings.HasShownFirstRunGuide };
         var cancel = new Button { Text = "취소", DialogResult = DialogResult.Cancel, AutoSize = true };
         AcceptButton = ok; CancelButton = cancel;
         var layout = new TableLayoutPanel { Dock = DockStyle.Fill, Padding = new Padding(12), ColumnCount = 3, RowCount = 7 };

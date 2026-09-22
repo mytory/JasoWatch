@@ -9,6 +9,7 @@ public sealed class AppSettings
     public bool IncludeSubdirectories { get; set; } = true;
     public List<string> ExcludedExtensions { get; set; } = [".crdownload", ".part", ".tmp"];
     public List<string> ExcludedPrefixes { get; set; } = ["~$"];
+    public bool HasShownFirstRunGuide { get; set; }
 
     public static AppSettings Defaults() => new();
 }

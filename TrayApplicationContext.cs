@@ -35,6 +35,7 @@ public sealed class TrayApplicationContext : ApplicationContext
         ApplyAutostart();
         StartWatcher();
         UpdateUi();
+        ShowFirstRunGuideIfNeeded();
         _ = Task.Run(() => { while (existingInstanceSignal.WaitOne()) _ui.Post(_ => ShowBalloon("JasoWatch", "JasoWatch가 이미 실행 중입니다."), null); });
     }
 
@@ -154,6 +155,22 @@ public sealed class TrayApplicationContext : ApplicationContext
         var iconName = _paused ? "jasowatch-paused.ico" : _folderUnavailable || _normalizer.FailureCount > 0 ? "jasowatch-warning.ico" : "jasowatch-active.ico";
         using var stream = typeof(TrayApplicationContext).Assembly.GetManifestResourceStream($"JasoWatch.assets.icons.{iconName}")!;
         _tray.Icon = (Icon)new Icon(stream).Clone();
+    }
+
+    private void ShowFirstRunGuideIfNeeded()
+    {
+        if (_settings.HasShownFirstRunGuide) return;
+        _settings.HasShownFirstRunGuide = true;
+        try { SettingsStore.Save(_settings); }
+        catch { return; }
+        var timer = new System.Windows.Forms.Timer { Interval = 800 };
+        timer.Tick += (_, _) =>
+        {
+            timer.Stop();
+            timer.Dispose();
+            ShowBalloon("JasoWatch 시작", "트레이에서 자동 감시 중입니다. 기존 파일은 ‘기존 파일명 정리’ 메뉴에서 처리하세요.");
+        };
+        timer.Start();
     }
 
     private void OpenWatchFolder()
